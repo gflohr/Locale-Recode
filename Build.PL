@@ -33,12 +33,16 @@ my %module_build_args = (
     "integer" => 0,
     "strict" => 0,
     "vars" => 0
+  },
+  "test_requires" => {
+    "Test" => 0
   }
 );
 
 
 my %fallback_build_requires = (
-  "Module::Build" => "0.28"
+  "Module::Build" => "0.28",
+  "Test" => 0
 );
 
 

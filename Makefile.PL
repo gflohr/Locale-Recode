@@ -30,6 +30,9 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "vars" => 0
   },
+  "TEST_REQUIRES" => {
+    "Test" => 0
+  },
   "VERSION" => "2.0",
   "test" => {
     "TESTS" => "t/*.t"
@@ -42,6 +45,7 @@ my %FallbackPrereqs = (
   "Encode" => 0,
   "Encode::Alias" => 0,
   "Module::Build" => "0.28",
+  "Test" => 0,
   "base" => 0,
   "bytes" => 0,
   "constant" => 0,
