@@ -53,33 +53,6 @@ sub _recode
 
 __END__
 
-=head1 NAME
-
-Locale::RecodeData::_Encode - Internal wrapper around Encode 
-
-=head1 SYNOPSIS
-
-use Locale::RecodeData::_Encode;
-
-This module is internal to libintl.  Do not use directly!
-
-=head1 DESCRIPTION
-
-This module converts text with the help of Encode(3).  It is 
-tried first for conversions if libintl-perl detects the presence
-of Encode.
-
-=head1 AUTHOR
-
-Copyright (C) 2002-2018 L<Guido Flohr|http://www.guido-flohr.net/>
-(L<mailto:guido.flohr@cantanea.com>), all rights reserved.  See the source
-code for details!
-
-=head1 SEE ALSO
-
-Locale::Recode(3), Encode(3), perl(1)
-
-=cut
 Local Variables:
 mode: perl
 perl-indent-level: 4

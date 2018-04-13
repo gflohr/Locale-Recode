@@ -143,38 +143,6 @@ sub _toInternal
 
 __END__
 
-=head1 NAME
-
-Locale::RecodeData::UTF_8 - Conversion routines for UTF-8
-
-=head1 SYNOPSIS
-
-This module is internal to libintl.  Do not use directly!
-
-=head1 DESCRIPTION
-
-This modules contains the conversion tables for UTF-8.  It is capable of
-converting from UTF-8 to the internal format of libintl-perl and vice
-versa.   It is only suitable for Perl versions E<lt>= 5.8.0.  However,
-you do not have to bother about version checking, Locale::Recode(3)
-will do that for you.
-
-
-=head1 CHARACTER TABLE
-
-See http://www.unicode.org/.
-
-=head1 AUTHOR
-
-Copyright (C) 2002-2018 L<Guido Flohr|http://www.guido-flohr.net/>
-(L<mailto:guido.flohr@cantanea.com>), all rights reserved.  See the source
-code for details!
-
-=head1 SEE ALSO
-
-Locale::RecodeData(3), Locale::Recode(3), perl(1)
-
-=cut
 Local Variables:
 mode: perl
 perl-indent-level: 4
