@@ -58,7 +58,8 @@ EOF
 		my ($module, $from, $to) = @$_;
 		
 		unless ($loaded->{$module}) {
-			eval "require Locale::RecodeData::$module";
+            my $full_module = "Locale/RecodeData/$module.pm";
+			eval { require $full_module };
 			if ($@) {
 				$self->{__error} = $@;
 				return $self;
