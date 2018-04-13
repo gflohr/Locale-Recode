@@ -302,7 +302,7 @@ sub isSupported
 	# Determine the correct module.
 	if (exists $optional_conversions->{$mimename}) {
 		unless (defined $has_encode) {
-			eval "require Encode";
+			eval { require Encode };
 			$has_encode = !$@;
 
 			if ($has_encode) {
@@ -316,7 +316,7 @@ sub isSupported
 
 		if ($has_encode) {
 			# Now check whether Encode really supports that encoding.
-			eval "Encode::encode ('$mimename', 'x')";
+			eval { Encode::encode ($mimename, 'x') };
 		
 			unless ($@) {
 				$conversions->{$mimename} = '_Encode';
