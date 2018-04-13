@@ -926,7 +926,7 @@ All character codes are in hexadecimal.  Please read 'ISO-10646' as
 
 Copyright (C) 2002-2018 L<Guido Flohr|http://www.guido-flohr.net/>
 (L<mailto:guido.flohr@cantanea.com>), all rights reserved.  See the source
-code for details!code for details!
+code for details!
 
 =head1 SEE ALSO
 
@@ -944,5 +944,4 @@ perl-label-offset: -4
 cperl-indent-level: 4
 cperl-continued-statement-offset: 2
 tab-width: 4
-End:
-=cut
+
