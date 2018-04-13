@@ -13,7 +13,8 @@ routines slightly differ from `Encode(3pm)` in the following aspects:
 * It does not suffer from the bugs that were present in Encode's conversion 
   tables at the time that this module was written.
 * All code points in the corresponding tables of 8 bit character sets
-  are documented.  Try for example `perldoc Locale::RecodeData::KOI8_R`.
+  are documented.  Try for example
+  [`perldoc Locale::RecodeData::KOI8_R`](lib/Locale/RecodeData/KOI8_R.pod).
 * It only uses distinct character set names and well-known aliases (whereas
   Encode does fuzzy matching with sometimes surprising results).
 * It works with Perl 5 versions before Perl 5.6.
