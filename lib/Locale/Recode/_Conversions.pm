@@ -270,7 +270,7 @@ $optional_conversions = {
 
 my $has_encode;
 
-sub resolveAlias
+sub __resolveAlias
 {
 	my (undef, $encoding) = @_;
 
@@ -288,14 +288,14 @@ sub resolveAlias
 	return;
 }
 
-sub isSupported
+sub __isSupported
 {
 	my ($class, $encoding) = @_;
 
 	return unless defined $encoding && length $encoding;
 
 	$encoding = uc $encoding;
-	my $mimename = $class->resolveAlias ($encoding);
+	my $mimename = $class->__resolveAlias ($encoding);
 
 	return unless $mimename;
 	
@@ -330,12 +330,12 @@ sub isSupported
 	return;
 }
 
-sub listSupported
+sub __listSupported
 {
 	my ($class) = @_;
 
 	foreach my $opt (keys %$optional_conversions) {
-		$class->isSupported ($opt);
+		$class->__isSupported ($opt);
 	}
 
 	my @list = keys %$conversions;
@@ -343,19 +343,19 @@ sub listSupported
 }
 
 # Find a conversion path.
-sub findPath
+sub __findPath
 {
 	my ($class, $from, $to) = @_;
 
-	$from = 'INTERNAL' eq uc $from ? 'INTERNAL' : $class->resolveAlias ($from);
-	$to = 'INTERNAL' eq uc $to ? 'INTERNAL' : $class->resolveAlias ($to);
+	$from = 'INTERNAL' eq uc $from ? 'INTERNAL' : $class->__resolveAlias ($from);
+	$to = 'INTERNAL' eq uc $to ? 'INTERNAL' : $class->__resolveAlias ($to);
 	
 	return unless $from && $to;
 	
 	return [] if $from eq $to;
 
-	my $from_module = $class->isSupported ($from);
-	my $to_module = $class->isSupported ($to);
+	my $from_module = $class->__isSupported ($from);
+	my $to_module = $class->__isSupported ($to);
 
 	if (!$from_module) {
 		if ('INTERNAL' eq $from) {

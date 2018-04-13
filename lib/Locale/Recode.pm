@@ -46,7 +46,7 @@ EOF
     }
 
     # Find a conversion path.
-	my $path = Locale::Recode::_Conversions->findPath ($from_codeset, 
+	my $path = Locale::Recode::_Conversions->__findPath ($from_codeset, 
 													   $to_codeset);
 	unless ($path) {
 		$self->{__error} = 'EINVAL';
@@ -85,12 +85,12 @@ sub resolveAlias
 {
 	my ($class, $alias) = @_;
 
-	return Locale::Recode::_Conversions->resolveAlias ($alias);
+	return Locale::Recode::_Conversions->__resolveAlias ($alias);
 }
 
 sub getSupported
 {
-	return [ Locale::Recode::_Conversions->listSupported ];
+	return [ Locale::Recode::_Conversions->__listSupported ];
 }
 
 sub getCharsets
@@ -100,7 +100,7 @@ sub getCharsets
 
 	require Locale::Recode::_Aliases;
 
-	my $conversions = Locale::Recode::_Conversions->listSupported;
+	my $conversions = Locale::Recode::_Conversions->__listSupported;
 	foreach my $charset (keys %{Locale::Recode::_Aliases::ALIASES()}) {
 		my $mime_name = $self->resolveAlias ($charset);
 		next unless exists $all{$mime_name};
@@ -187,7 +187,11 @@ Locale::Recode(3) is part of libintl-perl, and it's main purpose is
 actually to implement a portable charset conversion framework for
 the message translation facilities described in Locale::TextDomain(3).
 
-=head1 CONSTRUCTOR
+=head1 CONSTRUCTORS
+
+=over 4
+
+=item B<new from =E<gt> FROM, to =E<gt> TO>
 
 The constructor C<new()> requires two named arguments:
 
@@ -210,6 +214,8 @@ internal state is set to bad and it will refuse to do any conversions.
 You can inquire the reason for the failure with the method
 getError().
 
+=back
+
 =head1 OBJECT METHODS
 
 The following object methods are available.
@@ -227,6 +233,13 @@ method getError().
 
 Returns either false if the object is not in an error state or
 an error message.
+
+=item B<resolveAlias ALIAS>
+
+Resolves B<ALIAS> into an official character set name.  Returns
+B<ALIAS> if B<ALIAS> is already an official character set name,
+or the official name of B<ALIAS>, or false if B<ALIAS> is not
+valid.
 
 =back
 

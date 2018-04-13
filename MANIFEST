@@ -151,6 +151,7 @@ lib/Locale/RecodeData/US_ASCII.pm
 lib/Locale/RecodeData/UTF_8.pm
 lib/Locale/RecodeData/VISCII.pm
 lib/Locale/RecodeData/_Encode.pm
+perlcritic.rc
 t/02asmo_449.t
 t/02atari-st-euro.t
 t/02atari-st.t
